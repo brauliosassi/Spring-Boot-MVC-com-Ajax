@@ -12,6 +12,15 @@ $("#linkPromocao").on('change', function() {
                 $("#titulo").val(data.title);
                 $("#site").text(data.site.replace("@", ""));
                 $("#LinkImagem").attr("src", data.image)
+            },
+            statusCode: {
+                404: function(){
+                    $("#alert").addClass("alert alert-danger").text("Nenhuma informação pode ser recuperada dessa URL!");
+                }
+            },
+            error: function() {
+                    $("#alert").addClass("alert alert-danger").text("Opss...Algo deu errado. Tente mais tarde.");
+
             }
         })
     }

@@ -20,8 +20,6 @@ public class DemoAjaxApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		SocialMetaTag og = service.getSocialMetaTagByUrl("https://www.mobly.com.br/sofa-3-lugares-corsega-linho-bege-314731.html?origin=jetmobly&label=");
-		System.out.println(og.toString());
 
 	}
 }

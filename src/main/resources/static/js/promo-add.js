@@ -5,10 +5,13 @@ $("#linkPromocao").on('change', function() {
     if(url.length > 7) {
         $.ajax({
             method:"POST",
-            url: "/meta/info?url=" +url,
+            url: "/meta/info?url=" + url,
             cache: false,
             success: function( data ) {
                 console.log(data);
+                $("#titulo").val(data.title);
+                $("#site").text(data.site.replace("@", ""));
+                $("#LinkImagem").attr("src", data.image)
             }
         })
     }

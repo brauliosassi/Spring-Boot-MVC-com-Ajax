@@ -40,6 +40,10 @@ public class Promocao implements Serializable {
     @Column(name = "data_cadastro", nullable = false)
     private LocalDateTime dtCadastro;
 
+    @ManyToOne
+    @JoinColumn(name = "categoria_fk")
+    private Categoria categoria;
+
     public Long getId() {
         return id;
     }
@@ -112,6 +116,26 @@ public class Promocao implements Serializable {
         this.dtCadastro = dtCadastro;
     }
 
+    public Categoria getCategoria() {
+        return categoria;
+    }
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
 
-
+    @Override
+    public String toString() {
+        return "Promocao{" +
+                "id=" + id +
+                ", titulo='" + titulo + '\'' +
+                ", linkPromocao='" + linkPromocao + '\'' +
+                ", sitePromocao='" + sitePromocao + '\'' +
+                ", descricao='" + descricao + '\'' +
+                ", linkImagem='" + linkImagem + '\'' +
+                ", preco=" + preco +
+                ", likes=" + likes +
+                ", dtCadastro=" + dtCadastro +
+                ", categoria=" + categoria +
+                '}';
+    }
 }

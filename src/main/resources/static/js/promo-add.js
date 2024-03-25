@@ -1,3 +1,31 @@
+//submit do formulário para o controller
+$("form-add-promo").submit(function() {
+    //bloquear o comportamento padrão do submit
+    evt.preventDefault();
+    promo.linkPromocao = $("#linkPromocao").val();
+    promo.descricao = $("#descricao").val();
+    promo.preco = $("#preco").val();
+    promo.titulo = $("#titulo").val();
+    promo.categoria = $("#categoria").val();
+    promo.linkImage = $("#linkImage").attr("src");
+    promo.site = $("#site").text();
+
+    console.log('promo > ', promo);
+
+    $.ajax({
+        method: "POST",
+        url: "/promocao/save",
+        data: promo,
+        success: function() {
+            $("alert").addClass("alert alert-success").text("Ok! Promoção cadastrada com sucesso.");
+        },
+        error: function(xhr) {
+            console.log(">error: ",xhr.responseText);
+            $("#alert").addClass("alert alert-danger").text("Não foi possível salvar esta promoção.");
+        }
+    })
+});
+
 //funcao para capturar metatags
 $("#linkPromocao").on('change', function() {
     var url = $(this).val();
